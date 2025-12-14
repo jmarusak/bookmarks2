@@ -10,7 +10,7 @@ const db = new Firestore({
  * @returns {Promise<Array>} Array of link objects
  */
 async function getAllLinks() {
-  const snapshot = await db.collection('links').get();
+  const snapshot = await db.collection('links').orderBy('createdAt', 'desc').get();
   const links = [];
 
   snapshot.forEach((doc) => {
