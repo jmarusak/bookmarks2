@@ -5,10 +5,10 @@ import "./InsertPage.css";
 const InsertPage = () => {
   const [formData, setFormData] = useState({
     url: "",
-    image: "",
     title: "",
     category: "",
     description: "",
+    image: "",
   });
   const navigate = useNavigate();
 
@@ -21,9 +21,8 @@ const InsertPage = () => {
     e.preventDefault();
     const now = new Date().toISOString();
     const newEntry = {
-      link_id: now,
       ...formData,
-      created_on: now,
+      createdAt: now,
     };
 
     try {
@@ -41,7 +40,7 @@ const InsertPage = () => {
       }
 
       const data = await response.json();
-      console.log('link_id:', data);
+      console.log('id:', data);
     } catch (error) {
       console.error('Error:', error);
     }
@@ -54,9 +53,6 @@ const InsertPage = () => {
       <form onSubmit={handleSubmit} className="insert-form">
         <label>URL:</label>
         <input type="url" name="url" value={formData.url} onChange={handleChange} required />
-
-        <label>Image:</label>
-        <input type="url" name="image" value={formData.image} onChange={handleChange} required />
 
         <label>Title:</label>
         <input type="text" name="title" value={formData.title} onChange={handleChange} required />
@@ -78,6 +74,9 @@ const InsertPage = () => {
 
         <label>Description:</label>
         <textarea name="description" value={formData.description} onChange={handleChange} required />
+
+        <label>Image:</label>
+        <input type="url" name="image" value={formData.image} onChange={handleChange} required />
 
         <button type="submit">Save</button>
       </form>

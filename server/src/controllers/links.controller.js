@@ -21,6 +21,27 @@ async function getAllLinks(req, res) {
 }
 
 /**
+ * Create a new link
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ */
+async function createLink(req, res) {
+  try {
+    const linkData = req.body
+    const newLink = await linksService.createLink(linkData)
+    res.status(201).json({
+      success: true,
+      data: newLink
+    })
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: 'Failed to create link'
+    })
+  }
+}
+
+/**
  * Delete a link by ID
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
@@ -43,5 +64,6 @@ async function deleteLink(req, res) {
 
 module.exports = {
   getAllLinks,
+  createLink,
   deleteLink
 }

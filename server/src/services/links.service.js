@@ -25,6 +25,19 @@ async function getAllLinks() {
 }
 
 /**
+ * Create a new link
+ * @param {Object} linkData - The link data to create
+ * @returns {Promise<Object>} The created link with its ID
+ */
+async function createLink(linkData) {
+  const docRef = await db.collection('links').add(linkData);
+  return {
+    id: docRef.id,
+    ...linkData
+  };
+}
+
+/**
  * Delete a link by ID
  * @param {string} id - The document ID of the link to delete
  * @returns {Promise<void>}
@@ -35,5 +48,6 @@ async function deleteLink(id) {
 
 module.exports = {
   getAllLinks,
+  createLink,
   deleteLink
 }
