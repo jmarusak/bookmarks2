@@ -16,7 +16,7 @@ const Table = ({ links }) => {
         </thead>
         <tbody>
           {links.map((link) => (
-            <tr key={link.link_id}>
+            <tr key={link.id}>
               <td>
                 <img src={link.image} alt={link.title} className="table-image" />
               </td>
@@ -26,7 +26,7 @@ const Table = ({ links }) => {
               <td>
                 <a href={link.url} target="_blank" rel="noopener noreferrer"> {link.url} </a>
               </td>
-              <td>{link.createdAt}</td>
+              <td>{link.createdAt} <br /><br /> {link.id}</td>
             </tr>
           ))}
         </tbody>

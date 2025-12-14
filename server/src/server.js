@@ -12,11 +12,13 @@ app.use(express.json())
 
 // Routes
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Welcome to Bookmarks API')
 })
 
 app.use('/api/links', linksRoutes)
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+// Listen to the App Engine-specified port, or 8080 otherwise
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}...`);
+});

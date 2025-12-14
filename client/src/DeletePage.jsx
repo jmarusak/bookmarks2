@@ -4,7 +4,7 @@ import "./DeletePage.css";
 
 const DeletePage = () => {
   const [formData, setFormData] = useState({
-    link_id: "",
+    id: "",
   });
   const navigate = useNavigate();
 
@@ -15,10 +15,10 @@ const DeletePage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const link_id = formData["link_id"];
+    const id = formData["id"];
 
     try {
-      const api_url = "http://localhost:3000/api/links/" + link_id;
+      const api_url = "http://localhost:3000/api/links/" + id;
       const response = await fetch(api_url, {
         method: 'DELETE',
       });
@@ -39,8 +39,8 @@ const DeletePage = () => {
     <div className="delete-page">
       <h1>Delete Bookmark</h1>
       <form onSubmit={handleSubmit} className="delete-form">
-        <label>Link ID/Created On:</label>
-        <input type="text" name="link_id" value={formData.link_id} onChange={handleChange} required />
+        <label>Bookmark ID:</label>
+        <input type="text" name="id" value={formData.id} onChange={handleChange} required />
 
         <button type="submit">Delete</button>
       </form>

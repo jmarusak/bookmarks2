@@ -20,6 +20,28 @@ async function getAllLinks(req, res) {
   }
 }
 
+/**
+ * Delete a link by ID
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ */
+async function deleteLink(req, res) {
+  try {
+    const { id } = req.params
+    await linksService.deleteLink(id)
+    res.json({
+      success: true,
+      message: 'Link deleted successfully'
+    })
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: 'Failed to delete link'
+    })
+  }
+}
+
 module.exports = {
-  getAllLinks
+  getAllLinks,
+  deleteLink
 }

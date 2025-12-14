@@ -1,0 +1,13 @@
+env: standard
+service: default
+runtime: nodejs20
+
+instance_class: F1
+
+automatic_scaling:
+  min_instances: 0
+  max_instances: 1
+
+env_variables:
+  FIREBASE_PROJECT_ID: "martinview7"
+  FIREBASE_DATABASE_ID: "bookmarks"

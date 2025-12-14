@@ -1,0 +1,75 @@
+# This file specifies files that are intentionally untracked by gcloud
+# and should NOT be uploaded to Google App Engine
+
+# Node.js dependencies (installed during deployment)
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+pnpm-debug.log
+lerna-debug.log
+yarn.lock
+pnpm-lock.yaml
+
+# Environment variables (configure in App Engine settings instead)
+.env
+.env.*
+!.env.example
+
+# Git files
+.git/
+.gitignore
+.gitattributes
+.gcloudignore
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+cloudbuild.yaml
+
+# Testing
+test/
+tests/
+*.test.js
+*.spec.js
+coverage/
+.nyc_output/
+jest.config.js
+
+# Editor and IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sw?
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+.aider*
+
+# Logs
+logs/
+*.log
+
+# Documentation (optional - uncomment if you want to exclude)
+README.md
+CLAUDE.md
+docs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Build artifacts
+dist/
+dist-ssr/
+build/
+utils/
+*.local
+
+# Backup files
+*.bak
+*.backup
+*~
