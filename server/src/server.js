@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
+const path = require('path')
 const app = express()
-const port = 3000
 
 // Import routes
 const linksRoutes = require('./routes/links.routes')
@@ -10,12 +10,17 @@ const linksRoutes = require('./routes/links.routes')
 app.use(cors())
 app.use(express.json())
 
-// Routes
-app.get('/', (req, res) => {
-  res.send('Welcome to Bookmarks API')
-})
+// Serve static files from the React app's build directory
+app.use(express.static(path.join(__dirname, '../static')))
 
+// API Routes
 app.use('/api/links', linksRoutes)
+
+// Handle React routing - return index.html for all other routes
+// This must come AFTER API routes
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../static/index.html'))
+})
 
 // Listen to the App Engine-specified port, or 8080 otherwise
 const PORT = process.env.PORT || 8080;

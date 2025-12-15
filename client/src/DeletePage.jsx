@@ -18,7 +18,7 @@ const DeletePage = () => {
     const id = formData["id"];
 
     try {
-      const api_url = "http://localhost:3000/api/links/" + id;
+      const api_url = "/api/links/" + id;
       const response = await fetch(api_url, {
         method: 'DELETE',
       });

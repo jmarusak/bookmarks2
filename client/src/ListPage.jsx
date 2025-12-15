@@ -9,7 +9,7 @@ const ListPage = () => {
 
   const fetchAllData = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/links');
+      const response = await fetch('/api/links');
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -22,7 +22,7 @@ const ListPage = () => {
   
   const fetchCustomData = async (userPrompt) => {
     try {
-      const url_api = 'http://localhost:3000/api/custom?query=' + encodeURIComponent(userPrompt);
+      const url_api = '/api/custom?query=' + encodeURIComponent(userPrompt);
       const response = await fetch(url_api);
       if (!response.ok) {
         throw new Error('Network response was not ok');
